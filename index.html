@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚔️ SWORD.URL - сокращение линков</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <div class="header">
+            <div class="logo">
+                <span class="sword">⚔️</span>
+                <h1>SWORD.URL</h1>
+            </div>
+            <div class="nav">
+                <button onclick="showPage('main')">Главная</button>
+                <button onclick="showPage('my')">Мои ссылки</button>
+                <button onclick="showPage('stats')">Статы</button>
+            </div>
+        </div>
+
+        <!-- Главная страница -->
+        <div id="mainPage" class="page active">
+            <div class="hero">
+                <h2>Делай свои ссылки</h2>
+                <p>Каждая ссылка — легендарное оружие</p>
+            </div>
+
+            <div class="input-section">
+                <input type="url" id="longUrl" placeholder="Вставь длинную ссылку...">
+                <div class="options">
+                    <select id="swordClass">
+                        <option value="basic">⚔️ Обычный линк</option>
+                        <option value="fire">🔥 Огненный линк</option>
+                        <option value="ice">❄️ Ледяной линк</option>
+                        <option value="poison">☠️ Отравленный линк</option>
+                    </select>
+                    <input type="number" id="ttl" placeholder="Время жизни (часов)" min="1" max="24">
+                    <label class="checkbox">
+                        <input type="checkbox" id="selfDestruct"> Самоуничтожение после первого перехода
+                    </label>
+                </div>
+                <button class="forge-btn" onclick="createShortUrl()">СОЗДАТЬ ЛИНk ⚔️</button>
+            </div>
+
+            <div class="result" id="result" style="display:none;">
+                <h3>⚔️ ТВОЙ ЛИНК ГОТОВ:</h3>
+                <div class="short-url" id="shortUrl"></div>
+                <div class="qr-code" id="qrCode"></div>
+                <button class="copy-btn" onclick="copyToClipboard()">📋 КОПИРОВАТЬ</button>
+            </div>
+        </div>
+
+        <!-- Мои ссылки -->
+        <div id="myPage" class="page">
+            <h2>📜 МОИ ССЫЛКИ</h2>
+            <div id="linksList" class="links-list"></div>
+        </div>
+
+        <!-- Статистика -->
+        <div id="statsPage" class="page">
+            <h2>📊 СТАТЫ</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalLinks">0</div>
+                    <div class="stat-label">Всего линков</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalClicks">0</div>
+                    <div class="stat-label">Всего ударов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="activeLinks">0</div>
+                    <div class="stat-label">Активных</div>
+                </div>
+            </div>
+            <div class="battle-chart" id="battleChart"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
